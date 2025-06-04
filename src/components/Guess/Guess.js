@@ -1,12 +1,12 @@
 import React from "react";
+import { range } from "../../utils";
 
-function Guess({ word }) {
-  const letters = word ? word.split("") : ["", "", "", "", ""];
+function Guess({ guess }) {
   return (
     <p className="guess">
-      {letters.map((letter, i) => (
-        <span key={i} className="cell">
-          {letter}
+      {range(5).map((letterIndex) => (
+        <span key={letterIndex} className={`cell ${guess?.[letterIndex]?.status ?? ""}`}>
+          {guess?.[letterIndex]?.letter}
         </span>
       ))}
     </p>
